@@ -8,8 +8,21 @@ A complete k-ary tree is a k-ary tree in which all leaves have same depth and al
 
 using namespace std;
 
+//retorna o fatorial de n
+int fat(int n){
+  if(n==0 || n==1)
+    return 1;
+  return n*fat(n-1);
+}
+
+//conta quantas combinações de labeling de nodos de uma árvore
 int treeLabeling(int k, int d){
-  return 0;
+  //se a profundidade for 1, retorna o a permutação dos nós filhos
+  if(d == 1){
+    return fat(k);
+  }
+  
+  return d * treeLabeling(k, d-1);
 }
 
 
